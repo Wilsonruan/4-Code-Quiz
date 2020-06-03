@@ -1,9 +1,10 @@
 var startButton = document.getElementById('start-btn')
 startButton.addEventListener('click', startGame)
-
+var questionContainerElements = document.getElementById('question-container')
 
 function startGame() {
   startButton.classList.add('hide')
+  questionContainerElements.classList.remove('hide')
 }
 
 function setNextQuestion() {
