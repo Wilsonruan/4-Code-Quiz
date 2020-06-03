@@ -19,6 +19,16 @@ function setNextQuestion() {
 
 function showQuestion(title) {
   questionElement.innerText = (title.title)
+  title.choices.forEach(answer => {
+    var button = document.createElement('button')
+    button.innerText = answer.text
+    button.classList.add('btn-primary')
+    if (answer.correct) {
+      button.dataset.correct = answer.correct
+    }
+    button.addEventListener('click', selectAnswer)
+    answerButtonsElement.appendChild(button)
+  })
 }
 
 function selectAnswer() {
@@ -29,12 +39,18 @@ function selectAnswer() {
 var questions = [
     {
       title: "Commonly used data types DO NOT include:",
-      choices: ["strings", "booleans", "alerts", "numbers"],
-      answer: "alerts"
+      choices: [
+        {text: "strings", correct: false}, 
+        {text: "booleans", correct: false},
+        {text: "alerts", correct: true},
+        {text: "numbers", correct: false},]
     },
     {
       title: "The condition in an if / else statement is enclosed within ____.",
-      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-      answer: "parentheses"
+      choices: [
+        {text: "quotes", correct: false}, 
+        {text: "curly brackets", correct: false},
+        {text: "parentheses", correct: true},
+        {text: "nsquare brackets", correct: false},]
     }
   ];
