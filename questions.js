@@ -1,3 +1,20 @@
+var startButton = document.getElementById('start-btn')
+startButton.addEventListener('click', startGame)
+
+
+function startGame() {
+  startButton.classList.add('hide')
+}
+
+function setNextQuestion() {
+
+}
+
+function selectAnswer() {
+
+}
+
+
 var questions = [
     {
       title: "Commonly used data types DO NOT include:",
