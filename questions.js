@@ -19,7 +19,7 @@ var viewAllHighScores = document.getElementById('view-high-score-button')
 
 function timer() {
   var timerInterval = setInterval (() => {
-    if (countDown < 0 || stopQuiz === true){
+    if (countDown < 0 || stopQuiz){
       clearInterval(timerInterval);
       getPlayerName ()
     } else {
@@ -83,7 +83,6 @@ function selectAnswer(e) {
     timer()
   }
 }
-
 
 // Step 5: Shows users if they are correct/incorrect.
 function setStatusClass(element, correct) {
