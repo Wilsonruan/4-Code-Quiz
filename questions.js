@@ -6,7 +6,6 @@ var shuffledQuestions, currentQuestionIndex
 var questionElement = document.getElementById('question')
 var answerButtonsElement = document.getElementById('answer-buttons')
 var correctAnswer = document.getElementById('correct-result')
-var inCorrectAnswer = document.getElementById('incorrect-result')
 // Timer variables
 var showTimer = document.getElementById('timer-count-down')
 var countDown = 75
@@ -86,9 +85,9 @@ function selectAnswer(e) {
 // Step 5: Shows users if they are correct/incorrect.
 function setStatusClass(element, correct) {
   if (correct) {
-    correctAnswer.classList.remove('hide')
+    correctAnswer.innerText = "Correct"
   } else {
-    inCorrectAnswer.classList.remove('hide')
+    correctAnswer.innerText = "Incorrect"
     countDown = countDown - 15;
   }
   setTimeout(resultsDisappear, 1000)
@@ -96,8 +95,7 @@ function setStatusClass(element, correct) {
 
 // Step 5.5: Remove answer results.
 function resultsDisappear() {
-  correctAnswer.classList.add('hide')
-  inCorrectAnswer.classList.add('hide')
+  correctAnswer.innerText = ''
 }
 
 //Step 6: Get player's name.
