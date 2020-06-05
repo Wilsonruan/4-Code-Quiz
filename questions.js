@@ -6,8 +6,12 @@ var shuffledQuestions
 var currentQuestionIndex
 var questionElement = document.getElementById('question')
 var answerButtonsElement = document.getElementById('answer-buttons')
+var correctAnswer = document.getElementById('correct-result')
+var inCorrectAnswer = document.getElementById('incorrect-result')
 
 function startGame() {
+  correctAnswer.classList.add('hide')
+  inCorrectAnswer.classList.add('hide')
   startButton.classList.add('hide')
   questionContainerElements.classList.remove('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
@@ -42,6 +46,8 @@ function resetState() {
 }
 
 function selectAnswer(e) {
+  correctAnswer.classList.add('hide')
+  inCorrectAnswer.classList.add('hide')
   var selectedbutton = e.target
   var correct = selectedbutton.dataset.correct
   setStatusClass(document.body, correct)
@@ -60,9 +66,9 @@ function nextQuestion () {
 
 function setStatusClass(element, correct) {
   if (correct) {
-    console.log('correct')
+    correctAnswer.classList.remove('hide')
   } else {
-    console.log('wrong')
+    inCorrectAnswer.classList.remove('hide')
   }
 }
 
