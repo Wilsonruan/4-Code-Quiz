@@ -76,8 +76,8 @@ function selectAnswer(e) {
     setNextQuestion()
   } else {
     getPlayerName()
-    startButton.innerText = 'Restart'
-    startButton.classList.remove('hide')
+    // startButton.innerText = 'Restart'
+    // startButton.classList.remove('hide')
   }
 }
 
@@ -102,6 +102,7 @@ function resultsDisappear() {
 //Step 6: Get player's name.
 function getPlayerName () {
   inputBoxPlayerName.classList.remove('hide')
+  questionContainerElements.classList.add('hide')
 }
 
 var questions = [
