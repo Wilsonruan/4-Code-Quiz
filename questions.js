@@ -101,7 +101,7 @@ function resultsDisappear() {
 }
 
 //Step 6: Get player's name.
-function getPlayerName (x) {
+function getPlayerName () {
   inputBoxPlayerName.classList.remove('hide')
   questionContainerElements.classList.add('hide')
   showTimer.classList.add('hide')
