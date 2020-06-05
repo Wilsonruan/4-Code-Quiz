@@ -19,9 +19,9 @@ function timer() {
     countDown = 75; //Need to change to High Score Function
   }
   showTimer.innerText = "Timer " + countDown
-  timeStopper = setTimeout(countingDown, 1000)
+  timeStopper = setTimeout(countingDownTime, 1000)
 }
-function countingDown() {
+function countingDownTime() {
   countDown--
   timer()
 }
