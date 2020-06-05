@@ -12,8 +12,8 @@ var countDown = 75
 var timeStopper
 // High Score variables
 var inputBoxPlayerName = document.getElementById('Input-Box-Name')
-
 var getSumbitInfo = document.getElementById('submit-button')
+var viewAllHighScores 
 
 //Timer Function
 function timer() {
