@@ -110,13 +110,14 @@ function getPlayerName () {
   document.getElementById('show-me-score').innerHTML = 'Your score is ' + countDown
   getSumbitInfo.addEventListener('click', viewHighScore)
   startButton.innerText = 'Start Over'
+  arrayHignScore.push(countDown)
 }
 
 function viewHighScore () {
-
   inputBoxPlayerName.classList.add('hide')
   startButton.classList.remove('hide')
   startButton.classList.add('float-right')
+  viewAllHighScoresList.classList.remove('hide')
 }
 
 var questions = [
