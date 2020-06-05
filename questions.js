@@ -10,8 +10,6 @@ var correctAnswer = document.getElementById('correct-result')
 var inCorrectAnswer = document.getElementById('incorrect-result')
 
 function startGame() {
-  correctAnswer.classList.add('hide')
-  inCorrectAnswer.classList.add('hide')
   startButton.classList.add('hide')
   questionContainerElements.classList.remove('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
@@ -41,17 +39,15 @@ function showQuestion(title) {
 function resetState() {
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild
-    (answerButtonsElement.firstChild)
+      (answerButtonsElement.firstChild)
   }
 }
 
 function selectAnswer(e) {
-  correctAnswer.classList.add('hide')
-  inCorrectAnswer.classList.add('hide')
   var selectedbutton = e.target
   var correct = selectedbutton.dataset.correct
   setStatusClass(document.body, correct)
-  if (shuffledQuestions.length > currentQuestionIndex + 1){
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextQuestion()
   } else {
     startButton.innerText = 'Restart'
@@ -59,7 +55,7 @@ function selectAnswer(e) {
   }
 }
 
-function nextQuestion () {
+function nextQuestion() {
   currentQuestionIndex++
   setNextQuestion()
 }
@@ -67,50 +63,57 @@ function nextQuestion () {
 function setStatusClass(element, correct) {
   if (correct) {
     correctAnswer.classList.remove('hide')
+    setTimeout(resultsDisappear, 2000)
   } else {
     inCorrectAnswer.classList.remove('hide')
+    setTimeout(resultsDisappear, 2000)
   }
 }
 
+function resultsDisappear() {
+  correctAnswer.classList.add('hide')
+  inCorrectAnswer.classList.add('hide')
+}
+
 var questions = [
-    {
-      title: "Commonly used data types DO NOT include:",
-      choices: [
-        {text: "strings", correct: false}, 
-        {text: "booleans", correct: false},
-        {text: "alerts", correct: true},
-        {text: "numbers", correct: false},]
-    },
-    {
-      title: "The condition in an if / else statement is enclosed within ____.",
-      choices: [
-        {text: "quotes", correct: false}, 
-        {text: "curly brackets", correct: false},
-        {text: "parentheses", correct: true},
-        {text: "nsquare brackets", correct: false},]
-    },
-    {
-      title: "Which of the following will write Hello World in an alert box?",
-      choices: [
-        {text: "msg('Hello World')", correct: false}, 
-        {text: "alertBox('Hello World')", correct: false},
-        {text: "alert('Hello World')", correct: true},
-        {text: "msgBox('Hello World')", correct: false},]
-    },
-    {
-      title: "How to call a function named myfunction",
-      choices: [
-        {text: "call myfunction", correct: false}, 
-        {text: "myfunction call", correct: false},
-        {text: "myfunction()", correct: true},
-        {text: "()myfunction", correct: false},]
-    },
-    {
-      title: "What does this line mean 'while (exitNow == true)'?",
-      choices: [
-        {text: "No meaning", correct: false}, 
-        {text: "exit while when exitNow is false", correct: false},
-        {text: "exit while when exitNow is true", correct: true},
-        {text: "All Above", correct: false},]
-    },
-  ];
+  {
+    title: "Commonly used data types DO NOT include:",
+    choices: [
+      { text: "strings", correct: false },
+      { text: "booleans", correct: false },
+      { text: "alerts", correct: true },
+      { text: "numbers", correct: false },]
+  },
+  {
+    title: "The condition in an if / else statement is enclosed within ____.",
+    choices: [
+      { text: "quotes", correct: false },
+      { text: "curly brackets", correct: false },
+      { text: "parentheses", correct: true },
+      { text: "nsquare brackets", correct: false },]
+  },
+  {
+    title: "Which of the following will write Hello World in an alert box?",
+    choices: [
+      { text: "msg('Hello World')", correct: false },
+      { text: "alertBox('Hello World')", correct: false },
+      { text: "alert('Hello World')", correct: true },
+      { text: "msgBox('Hello World')", correct: false },]
+  },
+  {
+    title: "How to call a function named myfunction",
+    choices: [
+      { text: "call myfunction", correct: false },
+      { text: "myfunction call", correct: false },
+      { text: "myfunction()", correct: true },
+      { text: "()myfunction", correct: false },]
+  },
+  {
+    title: "What does this line mean 'while (exitNow == true)'?",
+    choices: [
+      { text: "No meaning", correct: false },
+      { text: "exit while when exitNow is false", correct: false },
+      { text: "exit while when exitNow is true", correct: true },
+      { text: "All Above", correct: false },]
+  },
+];
