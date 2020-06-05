@@ -14,8 +14,8 @@ var stopQuiz = false
 var inputBoxPlayerName = document.getElementById('Input-Box-Name')
 var getSumbitInfo = document.getElementById('submit-button')
 var viewAllHighScores = document.getElementById('view-high-score-button')
-// viewAllHighScores.addEventListener('click', viewHighScore)
-// var viewAllHighScoresList = document.getElementById('view-high-score')
+viewAllHighScores.addEventListener('click', viewHighScore)
+var viewAllHighScoresList = document.getElementById('view-high-score')
 
 function timer() {
   var timerInterval = setInterval (() => {
@@ -110,12 +110,12 @@ function getPlayerName () {
   document.getElementById('show-me-score').innerHTML = 'Your score is ' + countDown
 }
 
-// function viewHighScore () {
-//   inputBoxPlayerName.classList.add('hide')
-//   startButton.classList.remove('hide')
-//   startButton.classList.add('float-right')
-//   viewAllHighScoresList.classList.remove('hide')
-// }
+function viewHighScore () {
+  inputBoxPlayerName.classList.add('hide')
+  startButton.classList.remove('hide')
+  startButton.classList.add('float-right')
+  viewAllHighScoresList.classList.remove('hide')
+}
 
 var questions = [
   {
