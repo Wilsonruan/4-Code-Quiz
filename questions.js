@@ -17,13 +17,21 @@ function startGame() {
   setNextQuestion()
 }
 
-// Step 5: 
+// Step 2: 
 function setNextQuestion() {
   resetState()
   showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
-// Step 2: Shows the Question and Answers. Waiting for user to click.
+// Step 2.5: 
+function resetState() {
+  while (answerButtonsElement.firstChild) {
+    answerButtonsElement.removeChild
+      (answerButtonsElement.firstChild)
+  }
+}
+
+// Step 3: Shows the Question and Answers. Waiting for user to click.
 function showQuestion(title) {
   questionElement.innerText = (title.title)
   title.choices.forEach(answer => {
@@ -38,14 +46,7 @@ function showQuestion(title) {
   })
 }
 
-function resetState() {
-  while (answerButtonsElement.firstChild) {
-    answerButtonsElement.removeChild
-      (answerButtonsElement.firstChild)
-  }
-}
-
-// Step 3: User selects Answer and determines if answer is correct/incorrect.  If not more question, function will reset.
+// Step 4: User selects Answer and determines if answer is correct/incorrect.  If not more question, function will reset.
 function selectAnswer(e) {
   var selectedbutton = e.target
   var correct = selectedbutton.dataset.correct
@@ -60,12 +61,7 @@ function selectAnswer(e) {
 }
 
 
-// function nextQuestion() {
-  
-  
-// }
-
-// Step 4: Shows users if they are correct/incorrect.
+// Step 5: Shows users if they are correct/incorrect.
 function setStatusClass(element, correct) {
   if (correct) {
     correctAnswer.classList.remove('hide')
@@ -76,6 +72,7 @@ function setStatusClass(element, correct) {
   }
 }
 
+// Step 5.5: Remove answer results.
 function resultsDisappear() {
   correctAnswer.classList.add('hide')
   inCorrectAnswer.classList.add('hide')
