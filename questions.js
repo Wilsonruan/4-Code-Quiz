@@ -17,13 +17,13 @@ var viewAllHighScores = document.getElementById('view-high-score-button')
 // var viewAllHighScoresList = document.getElementById('view-high-score')
 
 function timer() {
-  var timerInterval = setInterval ( () => {
+  var timerInterval = setInterval (() => {
     countDown--
     showTimer.textContent = "Timer: " + countDown
-
+    
     if (countDown < 0) {
-      clearInterval(timerInterval);
       getPlayerName ()
+      clearInterval(timerInterval);
     }    
   },1000)
 }
