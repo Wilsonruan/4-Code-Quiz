@@ -11,11 +11,12 @@ var inCorrectAnswer = document.getElementById('incorrect-result')
 var showTimer = document.getElementById('timer-count-down')
 var countDown = 75
 // High Score variables
+var inputBoxPlayerName = document.getElementById('Input-Box-Name')
 
 //Timer Function
 function timer() {
   if (countDown < 0) {
-    countDown = 75;
+    countDown = 75; //Need to change to High Score Function
   }
   showTimer.innerText = "Timer " + countDown
   setTimeout(countingDown, 1000)
@@ -24,7 +25,6 @@ function timer() {
 function countingDown() {
   timer()
 }
-
 
 // Step 1: After clicking on the start button
 function startGame() {
@@ -75,6 +75,7 @@ function selectAnswer(e) {
     currentQuestionIndex++
     setNextQuestion()
   } else {
+    getPlayerName()
     startButton.innerText = 'Restart'
     startButton.classList.remove('hide')
   }
@@ -96,6 +97,11 @@ function setStatusClass(element, correct) {
 function resultsDisappear() {
   correctAnswer.classList.add('hide')
   inCorrectAnswer.classList.add('hide')
+}
+
+//Step 6: Get player's name.
+function getPlayerName () {
+  inputBoxPlayerName.classList.remove('hide')
 }
 
 var questions = [
