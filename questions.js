@@ -16,7 +16,6 @@ var getSumbitInfo = document.getElementById('submit-button')
 var viewAllHighScores = document.getElementById('view-high-score-button')
 viewAllHighScores.addEventListener('click', viewHighScore)
 var viewAllHighScoresList = document.getElementById('view-high-score')
-var arrayHignScore 
 
 //Timer Function
 function timer() {
@@ -109,8 +108,6 @@ function getPlayerName () {
   clearTimeout(timeStopper)
   document.getElementById('show-me-score').innerHTML = 'Your score is ' + countDown
   getSumbitInfo.addEventListener('click', viewHighScore)
-  startButton.innerText = 'Start Over'
-  arrayHignScore.push(countDown)
 }
 
 function viewHighScore () {
