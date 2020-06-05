@@ -13,7 +13,8 @@ var timeStopper
 // High Score variables
 var inputBoxPlayerName = document.getElementById('Input-Box-Name')
 var getSumbitInfo = document.getElementById('submit-button')
-var viewAllHighScores 
+var viewAllHighScores = document.getElementById('view-high-score-button')
+viewAllHighScores.addEventListener('click', viewHighScore)
 
 //Timer Function
 function timer() {
@@ -112,6 +113,7 @@ function getPlayerName () {
 
 function viewHighScore () {
   inputBoxPlayerName.classList.add('hide')
+  startButton.classList.add('hide')
 }
 
 var questions = [
