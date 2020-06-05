@@ -8,7 +8,7 @@ var answerButtonsElement = document.getElementById('answer-buttons')
 var correctAnswer = document.getElementById('correct-result')
 var inCorrectAnswer = document.getElementById('incorrect-result')
 
-var showTimer = document.getElementById('demo')
+var showTimer = document.getElementById('timer-count-down')
 var countDown = 75;
 
 function timer() {
