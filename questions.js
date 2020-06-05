@@ -101,12 +101,14 @@ function resultsDisappear() {
 }
 
 //Step 6: Get player's name.
-function getPlayerName () {
+function getPlayerName (x) {
   inputBoxPlayerName.classList.remove('hide')
   questionContainerElements.classList.add('hide')
   showTimer.classList.add('hide')
   clearTimeout(timeStopper)
-  countDown = 0
+  if (countDown < 0) {
+    countDown = 0
+  }
   document.getElementById('show-me-score').innerHTML = 'Your score is ' + countDown
 }
 
