@@ -8,8 +8,26 @@ var answerButtonsElement = document.getElementById('answer-buttons')
 var correctAnswer = document.getElementById('correct-result')
 var inCorrectAnswer = document.getElementById('incorrect-result')
 
+var showTimer = document.getElementById('demo')
+var countDown = 75;
+
+function timer() {
+  if (countDown < 0) {
+    countDown = 75;
+  }
+  showTimer.innerText = "Timer " + countDown
+  setTimeout(countingDown, 1000)
+  countDown--;
+}
+
+function countingDown() {
+  timer()
+}
+
+
 // Step 1: After clicking on the start button
 function startGame() {
+  timer()
   startButton.classList.add('hide')
   questionContainerElements.classList.remove('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
@@ -67,6 +85,7 @@ function setStatusClass(element, correct) {
     correctAnswer.classList.remove('hide')
   } else {
     inCorrectAnswer.classList.remove('hide')
+    countDown = countDown - 15;
   }
   setTimeout(resultsDisappear, 1000)
 }
