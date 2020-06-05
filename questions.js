@@ -20,7 +20,7 @@ var viewAllHighScoresList = document.getElementById('view-high-score')
 //Timer Function
 function timer() {
   if (countDown < 0) {
-    countDown = 75; //Need to change to High Score Function
+    getPlayerName ()
   }
   showTimer.innerText = "Timer " + countDown
   timeStopper = setTimeout(countingDownTime, 1000)
@@ -106,6 +106,7 @@ function getPlayerName () {
   questionContainerElements.classList.add('hide')
   showTimer.classList.add('hide')
   clearTimeout(timeStopper)
+  countDown = 0
   document.getElementById('show-me-score').innerHTML = 'Your score is ' + countDown
 }
 
