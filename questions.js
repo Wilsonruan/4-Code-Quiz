@@ -9,7 +9,6 @@ var correctAnswer = document.getElementById('correct-result')
 // Timer variables
 var showTimer = document.getElementById('timer-count-down')
 var countDown = 75
-var timeStopper
 // High Score variables
 var inputBoxPlayerName = document.getElementById('Input-Box-Name')
 var getSumbitInfo = document.getElementById('submit-button')
