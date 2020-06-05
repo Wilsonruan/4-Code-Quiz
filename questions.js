@@ -7,10 +7,12 @@ var questionElement = document.getElementById('question')
 var answerButtonsElement = document.getElementById('answer-buttons')
 var correctAnswer = document.getElementById('correct-result')
 var inCorrectAnswer = document.getElementById('incorrect-result')
-
+// Timer variables
 var showTimer = document.getElementById('timer-count-down')
-var countDown = 75;
+var countDown = 75
+// High Score variables
 
+//Timer Function
 function timer() {
   if (countDown < 0) {
     countDown = 75;
