@@ -21,9 +21,9 @@ function timer() {
   }
   showTimer.innerText = "Timer " + countDown
   timeStopper = setTimeout(countingDown, 1000)
-  countDown--;
 }
 function countingDown() {
+  countDown--
   timer()
 }
 
@@ -104,7 +104,9 @@ function resultsDisappear() {
 function getPlayerName () {
   inputBoxPlayerName.classList.remove('hide')
   questionContainerElements.classList.add('hide')
+  showTimer.classList.add('hide')
   clearTimeout(timeStopper)
+  document.getElementById('show-me-score').innerHTML = 'Your score is ' + countDown
   // finalScore = countDown
   // showTimer.innerText = "Timer " + finalScore
 }
