@@ -15,6 +15,8 @@ var inputBoxPlayerName = document.getElementById('Input-Box-Name')
 var getSumbitInfo = document.getElementById('submit-button')
 var viewAllHighScores = document.getElementById('view-high-score-button')
 viewAllHighScores.addEventListener('click', viewHighScore)
+var viewAllHighScoresList = document.getElementById('view-high-score')
+var arrayHignScore 
 
 //Timer Function
 function timer() {
@@ -79,8 +81,6 @@ function selectAnswer(e) {
     setNextQuestion()
   } else {
     getPlayerName()
-    // startButton.innerText = 'Restart'
-    // startButton.classList.remove('hide')
   }
 }
 
@@ -109,11 +109,14 @@ function getPlayerName () {
   clearTimeout(timeStopper)
   document.getElementById('show-me-score').innerHTML = 'Your score is ' + countDown
   getSumbitInfo.addEventListener('click', viewHighScore)
+  startButton.innerText = 'Start Over'
 }
 
 function viewHighScore () {
+
   inputBoxPlayerName.classList.add('hide')
-  startButton.classList.add('hide')
+  startButton.classList.remove('hide')
+  startButton.classList.add('float-right')
 }
 
 var questions = [
