@@ -14,7 +14,7 @@
 <body>
     <header>
         <nav>
-            <a id="view-high-score-button" class="nav-link btn btn-light float-left" href="localStorage.html">View High Score</a>
+            <button id="view-high-score-button" class="nav-link btn btn-light float-left">View High Score</button>
         </nav>
         <h1 id="timer-count-down" class="float-right">Timer: 75</h1>
     </header>
@@ -29,13 +29,13 @@
         <div class="controls">
             <button type="button" id="start-btn" class="start-btn btn btn-primary">Start Quiz</button>
         </div>
-        <form action="localStorage.html" method="GET" id="Input-Box-Name" class="hide col-6">
+        <form id="Input-Box-Name" class="hide col-6">
             <p id="show-me-score"></p>
             <p>Please enter name below.</p>
             <input type="text" id="input-name" class="form-control">
             <br>
             <button value="Submit" type="submit" id="submit-button"
-                class="submit-button form-group btn btn-primary float-right" href="localStorage.html">Submit</button>
+                class="submit-button form-group btn btn-primary float-right">Submit</button>
         </form>
     </div>
 </body>
