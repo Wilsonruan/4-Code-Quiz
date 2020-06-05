@@ -65,11 +65,10 @@ function selectAnswer(e) {
 function setStatusClass(element, correct) {
   if (correct) {
     correctAnswer.classList.remove('hide')
-    setTimeout(resultsDisappear, 2000)
   } else {
     inCorrectAnswer.classList.remove('hide')
-    setTimeout(resultsDisappear, 2000)
   }
+  setTimeout(resultsDisappear, 1000)
 }
 
 // Step 5.5: Remove answer results.
