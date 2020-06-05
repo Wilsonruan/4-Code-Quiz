@@ -17,17 +17,16 @@ var viewAllHighScores = document.getElementById('view-high-score-button')
 // viewAllHighScores.addEventListener('click', viewHighScore)
 // var viewAllHighScoresList = document.getElementById('view-high-score')
 
-//Timer Function
 function timer() {
-  if (countDown < 0) {
-    getPlayerName ()
-  }
-  showTimer.innerText = "Timer " + countDown
-  timeStopper = setTimeout(countingDownTime, 1000)
-}
-function countingDownTime() {
-  countDown--
-  timer()
+  var timerInterval = setInterval ( () => {
+    countDown--
+    showTimer.textContent = "Timer: " + countDown
+
+    if (countDown < 0) {
+      clearInterval(timerInterval);
+      getPlayerName ()
+    }    
+  },1000)
 }
 
 // Step 1: After clicking on the start button
@@ -105,7 +104,6 @@ function getPlayerName () {
   inputBoxPlayerName.classList.remove('hide')
   questionContainerElements.classList.add('hide')
   showTimer.classList.add('hide')
-  clearTimeout(timeStopper)
   if (countDown < 0) {
     countDown = 0
   }
