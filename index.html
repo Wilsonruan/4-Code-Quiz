@@ -13,7 +13,7 @@
 
 <body>
     <header>
-        <button class="btn btn-light float-left">View High Score</button>
+        <button type="button" class="btn btn-light float-left">View High Score</button>
         <h1 id="timer-count-down" class="float-right"></h1>
     </header>
     <br>
@@ -26,14 +26,14 @@
         <div id='correct-result' class="hide">Correct </div>
         <div id='incorrect-result' class="hide">Incorrect</div>
         <div class="controls">
-            <button id="start-btn" class="start-btn btn btn-primary">Start</button>
+            <button type="button" id="start-btn" class="start-btn btn btn-primary">Start</button>
         </div>
         <div id="Input-Box-Name" class="hide">
             <p id="show-me-score"></p>
             <p>Please enter name below.</p>
-            <input class="form-control">
+            <input type="text" id="input-name" class="form-control">
             <br>
-            <button type="submit" id="submit" class="submit-button form-group float-right">Submit</button>
+            <button type="submit" id="submit-button" class="submit-button form-group btn btn-primary float-right">Submit</button>
         </div>
         
     </div>
