@@ -2,13 +2,13 @@ var startButton = document.getElementById('start-btn')
 startButton.addEventListener('click', startGame)
 
 var questionContainerElements = document.getElementById('question-container')
-var shuffledQuestions
-var currentQuestionIndex
+var shuffledQuestions, currentQuestionIndex
 var questionElement = document.getElementById('question')
 var answerButtonsElement = document.getElementById('answer-buttons')
 var correctAnswer = document.getElementById('correct-result')
 var inCorrectAnswer = document.getElementById('incorrect-result')
 
+// Step 1: After clicking on the start button
 function startGame() {
   startButton.classList.add('hide')
   questionContainerElements.classList.remove('hide')
@@ -17,11 +17,13 @@ function startGame() {
   setNextQuestion()
 }
 
+// Step 5: 
 function setNextQuestion() {
   resetState()
   showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
+// Step 2: Shows the Question and Answers. Waiting for user to click.
 function showQuestion(title) {
   questionElement.innerText = (title.title)
   title.choices.forEach(answer => {
@@ -43,23 +45,27 @@ function resetState() {
   }
 }
 
+// Step 3: User selects Answer and determines if answer is correct/incorrect.  If not more question, function will reset.
 function selectAnswer(e) {
   var selectedbutton = e.target
   var correct = selectedbutton.dataset.correct
   setStatusClass(document.body, correct)
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    nextQuestion()
+    currentQuestionIndex++
+    setNextQuestion()
   } else {
     startButton.innerText = 'Restart'
     startButton.classList.remove('hide')
   }
 }
 
-function nextQuestion() {
-  currentQuestionIndex++
-  setNextQuestion()
-}
 
+// function nextQuestion() {
+  
+  
+// }
+
+// Step 4: Shows users if they are correct/incorrect.
 function setStatusClass(element, correct) {
   if (correct) {
     correctAnswer.classList.remove('hide')
