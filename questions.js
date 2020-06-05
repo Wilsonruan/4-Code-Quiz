@@ -107,7 +107,6 @@ function getPlayerName () {
   showTimer.classList.add('hide')
   clearTimeout(timeStopper)
   document.getElementById('show-me-score').innerHTML = 'Your score is ' + countDown
-  getSumbitInfo.addEventListener('click', viewHighScore)
 }
 
 function viewHighScore () {
