@@ -10,6 +10,7 @@ var inCorrectAnswer = document.getElementById('incorrect-result')
 // Timer variables
 var showTimer = document.getElementById('timer-count-down')
 var countDown = 75
+var timeStopper
 // High Score variables
 var inputBoxPlayerName = document.getElementById('Input-Box-Name')
 
@@ -19,7 +20,7 @@ function timer() {
     countDown = 75; //Need to change to High Score Function
   }
   showTimer.innerText = "Timer " + countDown
-  setTimeout(countingDown, 1000)
+  timeStopper = setTimeout(countingDown, 1000)
   countDown--;
 }
 function countingDown() {
@@ -103,6 +104,9 @@ function resultsDisappear() {
 function getPlayerName () {
   inputBoxPlayerName.classList.remove('hide')
   questionContainerElements.classList.add('hide')
+  clearTimeout(timeStopper)
+  // finalScore = countDown
+  // showTimer.innerText = "Timer " + finalScore
 }
 
 var questions = [
