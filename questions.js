@@ -19,7 +19,6 @@ function timer() {
   setTimeout(countingDown, 1000)
   countDown--;
 }
-
 function countingDown() {
   timer()
 }
@@ -27,6 +26,7 @@ function countingDown() {
 
 // Step 1: After clicking on the start button
 function startGame() {
+  countDown = 75
   timer()
   startButton.classList.add('hide')
   questionContainerElements.classList.remove('hide')
