@@ -12,3 +12,8 @@
 header {
     margin: 15px;
 }
+
+.container {
+    max-width: 800px;
+    margin-top: 50px;
+}
