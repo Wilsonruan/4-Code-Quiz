@@ -9,6 +9,7 @@ var correctAnswer = document.getElementById('correct-result')
 // Timer variables
 var showTimer = document.getElementById('timer-count-down')
 var countDown = 75
+var stopQuiz = false
 // High Score variables
 var inputBoxPlayerName = document.getElementById('Input-Box-Name')
 var getSumbitInfo = document.getElementById('submit-button')
@@ -18,13 +19,14 @@ var viewAllHighScores = document.getElementById('view-high-score-button')
 
 function timer() {
   var timerInterval = setInterval (() => {
-    countDown--
-    showTimer.textContent = "Timer: " + countDown
-    
-    if (countDown < 0) {
-      getPlayerName ()
+    if (countDown < 0 || stopQuiz === true){
       clearInterval(timerInterval);
-    }    
+      getPlayerName ()
+    } else {
+      countDown--
+    }
+
+    showTimer.textContent = "Timer: " + countDown
   },1000)
 }
 
@@ -77,7 +79,8 @@ function selectAnswer(e) {
     currentQuestionIndex++
     setNextQuestion()
   } else {
-    getPlayerName()
+    stopQuiz = true
+    timer()
   }
 }
 
@@ -102,10 +105,9 @@ function resultsDisappear() {
 function getPlayerName () {
   inputBoxPlayerName.classList.remove('hide')
   questionContainerElements.classList.add('hide')
-  showTimer.classList.add('hide')
   if (countDown < 0) {
     countDown = 0
-  }
+  } 
   document.getElementById('show-me-score').innerHTML = 'Your score is ' + countDown
 }
 
