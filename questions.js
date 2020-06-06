@@ -11,7 +11,7 @@ var showTimer = document.getElementById('timer-count-down')
 var countDown = 75
 var stopQuiz = false
 // High Score variables
-var inputBoxPlayerName = document.getElementById('Input-Box-Name')
+var inputBoxPlayerName = document.getElementById('input-box-name')
 var viewAllHighScores = document.getElementById('view-high-score-button')
 viewAllHighScores.addEventListener('click', viewHighScore)
 var viewAllHighScoresList = document.getElementById('view-high-score')
