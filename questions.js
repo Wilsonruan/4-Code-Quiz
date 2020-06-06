@@ -16,21 +16,20 @@ var viewAllHighScores = document.getElementById('view-high-score-button')
 viewAllHighScores.addEventListener('click', viewHighScore)
 var viewAllHighScoresList = document.getElementById('view-high-score')
 // Get player information
-var nameInput = document.querySelector("#input-name")
-var getSumbitInfo = document.querySelector("#submit-button")
-var submissionResponse = document.querySelector("#show-results");
+var nameInput = document.getElementById("input-name")
+var getSumbitInfo = document.getElementById("submit-button")
+var submissionResponse = document.getElementById("show-results");
+var eachGameCount = 0
 
 function timer() {
-  var timerInterval = setInterval (() => {
-    if (countDown <= 0 || stopQuiz){
-      clearInterval(timerInterval);
-      getPlayerName()
+  var timerInterval = setInterval(() => {
+    if (countDown <= 0 || stopQuiz) {
+      clearTimeout(timerInterval);
     } else {
       countDown--
     }
-
     showTimer.textContent = "Timer: " + countDown
-  },1000)
+  }, 1000)
 }
 
 // Step 1: After clicking on the start button
@@ -43,6 +42,7 @@ function startGame() {
   shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
   setNextQuestion()
+  clearTimeout()
 }
 
 // Step 2: 
@@ -85,6 +85,7 @@ function selectAnswer(e) {
     currentQuestionIndex++
     setNextQuestion()
   } else {
+    getPlayerName()
     stopQuiz = true
   }
 }
@@ -99,39 +100,39 @@ function setStatusClass(element, correct) {
   }
   setTimeout(() => {
     correctAnswer.innerText = ''
-  },500)
+  }, 3000)
 }
 
-// Step 5.5: Remove answer results.
-// function resultsDisappear() {
-//   correctAnswer.innerText = ''
-// }
+var arrayHighScores = []; //Need to more back up
 
 //Step 6: Get player's name.
-function getPlayerName () {
+function getPlayerName() {
   inputBoxPlayerName.classList.remove('hide')
-  questionContainerElements.classList.add('hide')
+  questionContainerElements.classList.add('hide');
   if (countDown < 0) {
     countDown = 0
-  } 
+  }
   document.getElementById('show-me-score').innerHTML = 'Your score is ' + countDown
-
   getSumbitInfo.addEventListener('click', (event) => {
     event.preventDefault()
     var response = nameInput.value + "-" + countDown + "."
-    submissionResponse.textContent = response
+    submissionResponse.textContent = response;
     startButton.classList.remove('hide')
     viewHighScore()
+    eachGameCount++;
+    for (var i = 0; i = 10; i++) {
+      console.log(eachGameCount)
+    }
   })
 }
 
 //Step 7: View High Scroe
-function viewHighScore () {
-    startButton.classList.remove('hide')
-    startButton.classList.add('float-right')
-    viewAllHighScoresList.classList.remove('hide')
-    inputBoxPlayerName.classList.add('hide')
-    showTimer.textContent = "Timer: 75" 
+function viewHighScore() {
+  startButton.classList.remove('hide')
+  startButton.classList.add('float-right')
+  viewAllHighScoresList.classList.remove('hide')
+  inputBoxPlayerName.classList.add('hide')
+  showTimer.textContent = "Timer: 75"
 }
 
 var questions = [
