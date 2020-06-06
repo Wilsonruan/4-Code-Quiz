@@ -97,13 +97,15 @@ function setStatusClass(element, correct) {
     correctAnswer.innerText = "Incorrect"
     countDown = countDown - 15;
   }
-  setTimeout(resultsDisappear, 1000)
+  setTimeout(() => {
+    correctAnswer.innerText = ''
+  },500)
 }
 
 // Step 5.5: Remove answer results.
-function resultsDisappear() {
-  correctAnswer.innerText = ''
-}
+// function resultsDisappear() {
+//   correctAnswer.innerText = ''
+// }
 
 //Step 6: Get player's name.
 function getPlayerName () {
