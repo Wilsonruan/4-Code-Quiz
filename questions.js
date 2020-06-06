@@ -15,7 +15,7 @@ var inputBoxPlayerName = document.getElementById('Input-Box-Name')
 var viewAllHighScores = document.getElementById('view-high-score-button')
 viewAllHighScores.addEventListener('click', viewHighScore)
 var viewAllHighScoresList = document.getElementById('view-high-score')
-
+// Get player information
 var nameInput = document.querySelector("#input-name")
 var getSumbitInfo = document.querySelector("#submit-button")
 var submissionResponse = document.querySelector("#show-results");
@@ -36,6 +36,7 @@ function timer() {
 // Step 1: After clicking on the start button
 function startGame() {
   viewAllHighScoresList.classList.add('hide')
+  viewAllHighScores.classList.add('disabled')
   countDown = 75
   stopQuiz = false
   timer()
@@ -113,22 +114,24 @@ function getPlayerName () {
     countDown = 0
   } 
   document.getElementById('show-me-score').innerHTML = 'Your score is ' + countDown
-  viewHighScore()
-}
 
-//Step 7: View High Scroe
-function viewHighScore () {
-  
   getSumbitInfo.addEventListener('click', (event) => {
     event.preventDefault()
     var response = nameInput.value + "-" + countDown + "."
     submissionResponse.textContent = response
     startButton.classList.remove('hide')
+    viewHighScore()
+  })
+}
+
+//Step 7: View High Scroe
+function viewHighScore () {
+    questionContainerElements.classList.add('hide')
+    startButton.classList.remove('hide')
     startButton.classList.add('float-right')
     viewAllHighScoresList.classList.remove('hide')
     inputBoxPlayerName.classList.add('hide')
-  })
-  
+    showTimer.textContent = "Timer: 75" 
 }
 
 var questions = [
