@@ -24,7 +24,7 @@ function timer() {
   var timerInterval = setInterval (() => {
     if (countDown <= 0 || stopQuiz){
       clearInterval(timerInterval);
-      getPlayerName ()
+      getPlayerName()
     } else {
       countDown--
     }
@@ -35,12 +35,10 @@ function timer() {
 
 // Step 1: After clicking on the start button
 function startGame() {
-  viewAllHighScoresList.classList.add('hide')
   viewAllHighScores.classList.add('disabled')
   countDown = 75
   stopQuiz = false
   timer()
-  startButton.classList.add('hide')
   questionContainerElements.classList.remove('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
@@ -55,6 +53,8 @@ function setNextQuestion() {
 
 // Step 2.5: 
 function resetState() {
+  startButton.classList.add('hide')
+  viewAllHighScoresList.classList.add('hide')
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild
       (answerButtonsElement.firstChild)
@@ -86,7 +86,6 @@ function selectAnswer(e) {
     setNextQuestion()
   } else {
     stopQuiz = true
-    timer()
   }
 }
 
@@ -126,7 +125,6 @@ function getPlayerName () {
 
 //Step 7: View High Scroe
 function viewHighScore () {
-    questionContainerElements.classList.add('hide')
     startButton.classList.remove('hide')
     startButton.classList.add('float-right')
     viewAllHighScoresList.classList.remove('hide')
