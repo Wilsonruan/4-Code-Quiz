@@ -29,13 +29,13 @@
         <div class="controls">
             <button type="button" id="start-btn" class="start-btn btn btn-primary">Start Quiz</button>
         </div>
-        <form id="input-box-name" class="hide col-6">
+        <form id="input-box-name" class="hide col-6" method="POST">
             <p id="show-me-score"></p>
             <label for="input-name">Please enter you initials below.</label>
-            <input type="text" id="input-name" class="form-control" name="input-name" required>
+            <input type="text" id="input-name" class="form-control" name="input-name">
             <br>
-            <input value="Submit" type="submit" id="submit-button"
-                class="submit-button form-group btn btn-primary float-right">
+            <button value="Submit" type="submit" id="submit-button"
+                class="submit-button form-group btn btn-primary float-right">Submit</button>
         </form>
         <div id="view-high-score" class="hide">
             <p>High Score Below:</p>
