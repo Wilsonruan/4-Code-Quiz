@@ -7,7 +7,6 @@ var shuffledQuestions, currentQuestionIndex;
 var countDown = 75; // Timer variables
 var stopQuiz = false;
 var inputBoxPlayerName = document.getElementById('input-box-name'); // High Score variables
-var viewAllHighScoresList = document.getElementById('view-high-score');
 var submissionResponse = document.getElementById("show-results"); // Get player information
 var response = [];
 var arrayHighScores = [];
@@ -32,24 +31,16 @@ function startGame() { // Step 1: After clicking on the start button
   shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
   timer()
-  setNextQuestion()
-}
-
-function setNextQuestion() { // Step 2: 
-  resetState()
   showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
-function resetState() { // Step 2.5:
+function showQuestion(title) { // Step 2: Shows the Question and Answers. Waiting for user to click.
   startButton.classList.add('hide')
-  viewAllHighScoresList.classList.add('hide')
+  submissionResponse.classList.add('hide')
   while (questionContainerElements.children[1].firstChild) {
     questionContainerElements.children[1].removeChild
-    (questionContainerElements.children[1].firstChild)
+      (questionContainerElements.children[1].firstChild)
   }
-}
-
-function showQuestion(title) { // Step 3: Shows the Question and Answers. Waiting for user to click.
   questionContainerElements.children[0].innerText = (title.title)
   title.choices.forEach(answer => {
     var button = document.createElement('button')
@@ -63,19 +54,19 @@ function showQuestion(title) { // Step 3: Shows the Question and Answers. Waitin
   })
 }
 
-function selectAnswer(e) { // Step 4: User selects Answer and determines if answer is correct/incorrect.  If not more question, function will reset.
+function selectAnswer(e) { // Step 3: User selects Answer and determines if answer is correct/incorrect.  If not more question, function will reset.
   var selectedbutton = e.target
   var correct = selectedbutton.dataset.correct
-  setStatusClass(document.body, correct)
+  showAnswer(document.body, correct)
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
     currentQuestionIndex++
-    setNextQuestion()
+    showQuestion(shuffledQuestions[currentQuestionIndex])
   } else {
     stopQuiz = true
   }
 }
 
-function setStatusClass(element, correct) { // Step 5: Shows users if they are correct/incorrect.
+function showAnswer(element, correct) { // Step 4: Shows users if they are correct/incorrect.
   if (correct) {
     questionContainerElements.children[2].innerText = "Correct"
   } else {
@@ -87,20 +78,26 @@ function setStatusClass(element, correct) { // Step 5: Shows users if they are c
   }, 500)
 }
 
-function getPlayerName() { //Step 6: Get player's name.
+function getPlayerName() { //Step 5: Get player's name.
   inputBoxPlayerName.classList.remove('hide')
   questionContainerElements.classList.add('hide');
   if (countDown < 0) {
     countDown = 0
   }
   inputBoxPlayerName.children[0].innerHTML = 'Your score is ' + countDown
-  
+
   inputBoxPlayerName.children[4].addEventListener('click', (event) => {
     event.preventDefault()
-    response = inputBoxPlayerName.children[2].value + "-" + countDown + "."
-    submissionResponse.textContent = response;
-    startButton.classList.remove('hide')
-    viewHighScore()
+
+    if (inputBoxPlayerName.children[2].value.length == 2) {
+      response = inputBoxPlayerName.children[2].value + "-" + countDown + "."
+      submissionResponse.textContent = "Thank you for playing: " + response;
+      startButton.classList.remove('hide')
+      viewResults()
+    } else {
+      inputBoxPlayerName.children[1].textContent = "Please try again with your initials."
+      getPlayerName()
+    }
   })
 }
 
@@ -109,10 +106,11 @@ function pushFunction() {
   console.log(arrayHighScores);
 }
 
-function viewHighScore() { //Step 7: View High Scroe
+function viewResults() { //Step 6: View High Scroe
   startButton.classList.remove('hide')
+  startButton.children[1].classList.remove('hide')
   startButton.classList.add('float-right')
-  viewAllHighScoresList.classList.remove('hide')
+  submissionResponse.classList.remove('hide')
   inputBoxPlayerName.classList.add('hide')
   navBar.children[1].textContent = "Timer: 75"
 }
