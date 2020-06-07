@@ -11,6 +11,7 @@ var response = [];
 var arrayHighScores = [];
 
 function timer() {
+  navBar.children[1].textContent = "Timer: 75"
   var timerInterval = setInterval(() => {
     if (countDown <= 0 || stopQuiz) {
       getPlayerName()
@@ -119,7 +120,7 @@ function viewResults() { //Step 6: View High Scroe
   startButton.classList.add('float-right')
   submissionResponse.classList.remove('hide')
   inputBoxPlayerName.classList.add('hide')
-  navBar.children[1].textContent = "Timer: 75"
+  navBar.children[1].textContent = "Timer: 0"
 }
 
 var questions = [
