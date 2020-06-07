@@ -88,7 +88,10 @@ function getPlayerName() { //Step 5: Get player's name.
   inputBoxPlayerName.children[0].innerHTML = 'Your score is ' + countDown
   inputBoxPlayerName.children[4].addEventListener('click', () => {
       event.preventDefault()
-    if (inputBoxPlayerName.children[2].value.length == 2) {
+    var checkInputBox = /[a-z]/gi;
+    var resultsInputBox = checkInputBox.test(inputBoxPlayerName.children[2].value);
+    inputBoxPlayerName.children[2].value = inputBoxPlayerName.children[2].value.toUpperCase();
+    if (inputBoxPlayerName.children[2].value.length == 2 && resultsInputBox) {
       if (pleaseStopIt) {
         response = inputBoxPlayerName.children[2].value + "-" + countDown + ".";
         arrayHighScores.push(response);
@@ -104,7 +107,7 @@ function getPlayerName() { //Step 5: Get player's name.
         viewResults();
       }
     } else {
-      inputBoxPlayerName.children[1].textContent = "Please try again with your initials.";
+      inputBoxPlayerName.children[1].textContent = "Please try again with your initials ONLY.";
       return;
     }
   })
