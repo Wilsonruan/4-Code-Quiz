@@ -71,7 +71,6 @@ function selectAnswer(e) { // Step 4: User selects Answer and determines if answ
     currentQuestionIndex++
     setNextQuestion()
   } else {
-    getPlayerName()
     stopQuiz = true
   }
 }
