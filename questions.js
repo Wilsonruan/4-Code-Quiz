@@ -1,10 +1,11 @@
 var startButton = document.getElementById('start-btn');  // Start Button
 startButton.addEventListener('click', startGame);
 var navBar = document.getElementById('nav-bar'); // Nav Bar
+navBar.children[0].addEventListener('click', viewHighScore);
 var questionContainerElements = document.getElementById('question-container'); //Question Container
 var shuffledQuestions, currentQuestionIndex;
 var countDown = 75; // Timer variables
-var stopQuiz = false;
+var stopQuiz, stopQuizViewHighScore = false;
 var inputBoxPlayerName = document.getElementById('input-box-name'); // High Score variables
 var submissionResponse = document.getElementById("show-results"); // Get player information
 var response = [];
@@ -14,7 +15,9 @@ function timer() {
   navBar.children[1].textContent = "Timer: 75"
   var timerInterval = setInterval(() => {
     if (countDown <= 0 || stopQuiz) {
-      getPlayerName()
+      getPlayerName();
+      clearTimeout(timerInterval);
+    } else if (stopQuizViewHighScore) {
       clearTimeout(timerInterval);
     } else {
       countDown--
@@ -24,8 +27,9 @@ function timer() {
 }
 
 function startGame() { // Step 1: After clicking on the start button
-  countDown = 75
-  stopQuiz = false
+  countDown = 75;
+  stopQuiz = false;
+  stopQuizViewHighScore = false;
   questionContainerElements.classList.remove('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
@@ -113,13 +117,19 @@ function getPlayerName() { //Step 5: Get player's name.
   })
 }
 
-function viewResults() { //Step 6: View High Scroe
-  startButton.classList.remove('hide')
-  startButton.children[1].classList.remove('hide')
-  startButton.classList.add('float-right')
-  submissionResponse.classList.remove('hide')
-  inputBoxPlayerName.classList.add('hide')
-  navBar.children[1].textContent = "Timer: 0"
+function viewHighScore() {
+  stopQuizViewHighScore = true;
+  questionContainerElements.classList.add('hide');
+  viewResults()
+}
+
+function viewResults() { //Step 6: View High Score
+  startButton.classList.remove('hide');
+  startButton.children[1].classList.remove('hide');
+  startButton.classList.add('float-right');
+  submissionResponse.classList.remove('hide');
+  inputBoxPlayerName.classList.add('hide');
+  navBar.children[1].textContent = "Timer: 0";
 }
 
 var questions = [
