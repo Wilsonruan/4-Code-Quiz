@@ -1,29 +1,21 @@
-var startButton = document.getElementById('start-btn')
-startButton.addEventListener('click', startGame)
-
-var questionContainerElements = document.getElementById('question-container')
-var shuffledQuestions, currentQuestionIndex
-var questionElement = document.getElementById('question')
-var answerButtonsElement = document.getElementById('answer-buttons')
-var correctAnswer = document.getElementById('correct-result')
-// Timer variables
-var countDown = 75
-var stopQuiz = false
-// High Score variables
-var inputBoxPlayerName = document.getElementById('input-box-name')
-var navBar = document.getElementById('nav-bar');
-navBar.children[0].addEventListener('click', viewHighScore)
-var viewAllHighScoresList = document.getElementById('view-high-score')
-// Get player information
-var nameInput = document.getElementById("input-name")
-var getSumbitInfo = document.getElementById("submit-button")
-var submissionResponse = document.getElementById("show-results");
-var eachGameCount = 0;
+var startButton = document.getElementById('start-btn');  // Start Button
+startButton.addEventListener('click', startGame);
+var navBar = document.getElementById('nav-bar'); // Nav Bar
+navBar.children[0].addEventListener('click', viewHighScore);
+var questionContainerElements = document.getElementById('question-container'); //Question Container
+var shuffledQuestions, currentQuestionIndex;
+var countDown = 75; // Timer variables
+var stopQuiz = false;
+var inputBoxPlayerName = document.getElementById('input-box-name'); // High Score variables
+var viewAllHighScoresList = document.getElementById('view-high-score');
+var submissionResponse = document.getElementById("show-results"); // Get player information
 var response = [];
+var arrayHighScores = [];
 
 function timer() {
   var timerInterval = setInterval(() => {
     if (countDown <= 0 || stopQuiz) {
+      getPlayerName()
       clearTimeout(timerInterval);
     } else {
       countDown--
@@ -32,39 +24,33 @@ function timer() {
   }, 1000)
 }
 
-// Step 1: After clicking on the start button
-function startGame() {
-  pushFunction ();
+function startGame() { // Step 1: After clicking on the start button
   navBar.children[0].classList.add('disabled')
   countDown = 75
   stopQuiz = false
-  timer()
   questionContainerElements.classList.remove('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
+  timer()
   setNextQuestion()
-  clearTimeout()
 }
 
-// Step 2: 
-function setNextQuestion() {
+function setNextQuestion() { // Step 2: 
   resetState()
   showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
-// Step 2.5: 
-function resetState() {
+function resetState() { // Step 2.5:
   startButton.classList.add('hide')
   viewAllHighScoresList.classList.add('hide')
-  while (answerButtonsElement.firstChild) {
-    answerButtonsElement.removeChild
-      (answerButtonsElement.firstChild)
+  while (questionContainerElements.children[1].firstChild) {
+    questionContainerElements.children[1].removeChild
+    (questionContainerElements.children[1].firstChild)
   }
 }
 
-// Step 3: Shows the Question and Answers. Waiting for user to click.
-function showQuestion(title) {
-  questionElement.innerText = (title.title)
+function showQuestion(title) { // Step 3: Shows the Question and Answers. Waiting for user to click.
+  questionContainerElements.children[0].innerText = (title.title)
   title.choices.forEach(answer => {
     var button = document.createElement('button')
     button.innerText = answer.text
@@ -73,12 +59,11 @@ function showQuestion(title) {
       button.dataset.correct = answer.correct
     }
     button.addEventListener('click', selectAnswer)
-    answerButtonsElement.appendChild(button)
+    questionContainerElements.children[1].appendChild(button)
   })
 }
 
-// Step 4: User selects Answer and determines if answer is correct/incorrect.  If not more question, function will reset.
-function selectAnswer(e) {
+function selectAnswer(e) { // Step 4: User selects Answer and determines if answer is correct/incorrect.  If not more question, function will reset.
   var selectedbutton = e.target
   var correct = selectedbutton.dataset.correct
   setStatusClass(document.body, correct)
@@ -91,34 +76,29 @@ function selectAnswer(e) {
   }
 }
 
-// Step 5: Shows users if they are correct/incorrect.
-function setStatusClass(element, correct) {
+function setStatusClass(element, correct) { // Step 5: Shows users if they are correct/incorrect.
   if (correct) {
-    correctAnswer.innerText = "Correct"
+    questionContainerElements.children[2].innerText = "Correct"
   } else {
-    correctAnswer.innerText = "Incorrect"
+    questionContainerElements.children[2].innerText = "Incorrect"
     countDown = countDown - 15;
   }
   setTimeout(() => {
-    correctAnswer.innerText = ''
+    questionContainerElements.children[2].innerText = ''
   }, 500)
 }
 
-var arrayHighScores = []; //Need to more back up
-
-
-//Step 6: Get player's name.
-function getPlayerName() {
+function getPlayerName() { //Step 6: Get player's name.
   inputBoxPlayerName.classList.remove('hide')
   questionContainerElements.classList.add('hide');
   if (countDown < 0) {
     countDown = 0
   }
-  document.getElementById('show-me-score').innerHTML = 'Your score is ' + countDown
+  inputBoxPlayerName.children[0].innerHTML = 'Your score is ' + countDown
   
-  getSumbitInfo.addEventListener('click', (event) => {
+  inputBoxPlayerName.children[4].addEventListener('click', (event) => {
     event.preventDefault()
-    response = nameInput.value + "-" + countDown + "."
+    response = inputBoxPlayerName.children[2].value + "-" + countDown + "."
     submissionResponse.textContent = response;
     startButton.classList.remove('hide')
     viewHighScore()
@@ -130,8 +110,7 @@ function pushFunction() {
   console.log(arrayHighScores);
 }
 
-//Step 7: View High Scroe
-function viewHighScore() {
+function viewHighScore() { //Step 7: View High Scroe
   startButton.classList.remove('hide')
   startButton.classList.add('float-right')
   viewAllHighScoresList.classList.remove('hide')
