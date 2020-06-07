@@ -1,5 +1,6 @@
 var startButton = document.getElementById('start-btn');  // Start Button
-startButton.addEventListener('click', startGame);
+startButton.children[0].addEventListener('click', startGame);
+// startButton.children[1].addEventListener('click', clearHighScore);
 var navBar = document.getElementById('nav-bar'); // Nav Bar
 navBar.children[0].addEventListener('click', viewHighScore);
 var questionContainerElements = document.getElementById('question-container'); //Question Container
@@ -120,7 +121,7 @@ function getPlayerName() { //Step 5: Get player's name.
 function viewHighScore() {
   stopQuizViewHighScore = true;
   questionContainerElements.classList.add('hide');
-  viewResults()
+  viewResults();
 }
 
 function viewResults() { //Step 6: View High Score
@@ -130,7 +131,21 @@ function viewResults() { //Step 6: View High Score
   submissionResponse.classList.remove('hide');
   inputBoxPlayerName.classList.add('hide');
   navBar.children[1].textContent = "Timer: 0";
+  console.log(arrayHighScores);
 }
+
+// function clearHighScore() {
+//   for (var i = 1; i < arrayHighScores.length; i++) {
+//     $(document).ready(function(){
+//       $(startButton.children[1]).click(function(){
+//         $("p").remove(submissionResponse.children[1]);
+//       });
+//     });
+//   }
+//   arrayHighScores = [];
+//   console.log(arrayHighScores);
+//   viewResults();
+// }
 
 var questions = [
   {
