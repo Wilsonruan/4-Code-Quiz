@@ -24,7 +24,6 @@ function timer() {
 }
 
 function startGame() { // Step 1: After clicking on the start button
-  navBar.children[0].classList.add('disabled')
   countDown = 75
   stopQuiz = false
   questionContainerElements.classList.remove('hide')
