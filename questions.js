@@ -81,6 +81,7 @@ function getPlayerName() { //Step 5: Get player's name.
   var pleaseStopIt = true;
   inputBoxPlayerName.classList.remove('hide')
   questionContainerElements.classList.add('hide');
+  inputBoxPlayerName.children[1].textContent = "Please enter your initials below.";
   if (countDown < 0) {
     countDown = 0
   }
@@ -91,21 +92,19 @@ function getPlayerName() { //Step 5: Get player's name.
       if (pleaseStopIt) {
         response = inputBoxPlayerName.children[2].value + "-" + countDown + ".";
         arrayHighScores.push(response);
-        // console.log(arrayHighScores);
-        submissionResponse.children[0].textContent = "View Hign Score";
+        submissionResponse.children[0].textContent = "View High Score";
         var para = document.createElement("p");
         var node = document.createTextNode(submissionResponse);
         para.appendChild(node);
         submissionResponse.appendChild(para);
         for (var i = 0; i < arrayHighScores.length; i++) {
           submissionResponse.children[i + 1].textContent = arrayHighScores[i];
-          console.log(arrayHighScores + i);
         }
         pleaseStopIt = false;
         viewResults();
       }
     } else {
-      inputBoxPlayerName.children[1].textContent = "Please try again with your initials."
+      inputBoxPlayerName.children[1].textContent = "Please try again with your initials.";
       return;
     }
   })
