@@ -1,7 +1,6 @@
 var startButton = document.getElementById('start-btn');  // Start Button
 startButton.addEventListener('click', startGame);
 var navBar = document.getElementById('nav-bar'); // Nav Bar
-navBar.children[0].addEventListener('click', viewHighScore);
 var questionContainerElements = document.getElementById('question-container'); //Question Container
 var shuffledQuestions, currentQuestionIndex;
 var countDown = 75; // Timer variables
@@ -79,31 +78,37 @@ function showAnswer(element, correct) { // Step 4: Shows users if they are corre
 }
 
 function getPlayerName() { //Step 5: Get player's name.
+  var pleaseStopIt = true;
   inputBoxPlayerName.classList.remove('hide')
   questionContainerElements.classList.add('hide');
   if (countDown < 0) {
     countDown = 0
   }
   inputBoxPlayerName.children[0].innerHTML = 'Your score is ' + countDown
-
-  inputBoxPlayerName.children[4].addEventListener('click', (event) => {
-    event.preventDefault()
-
+  inputBoxPlayerName.children[4].addEventListener('click', () => {
+      event.preventDefault()
     if (inputBoxPlayerName.children[2].value.length == 2) {
-      response = inputBoxPlayerName.children[2].value + "-" + countDown + "."
-      submissionResponse.textContent = "Thank you for playing: " + response;
-      startButton.classList.remove('hide')
-      viewResults()
+      if (pleaseStopIt) {
+        response = inputBoxPlayerName.children[2].value + "-" + countDown + ".";
+        arrayHighScores.push(response);
+        // console.log(arrayHighScores);
+        submissionResponse.children[0].textContent = "View Hign Score";
+        var para = document.createElement("p");
+        var node = document.createTextNode(submissionResponse);
+        para.appendChild(node);
+        submissionResponse.appendChild(para);
+        for (var i = 0; i < arrayHighScores.length; i++) {
+          submissionResponse.children[i + 1].textContent = arrayHighScores[i];
+          console.log(arrayHighScores + i);
+        }
+        pleaseStopIt = false;
+        viewResults();
+      }
     } else {
       inputBoxPlayerName.children[1].textContent = "Please try again with your initials."
-      getPlayerName()
+      return;
     }
   })
-}
-
-function pushFunction() {
-  arrayHighScores.push(response)
-  console.log(arrayHighScores);
 }
 
 function viewResults() { //Step 6: View High Scroe
