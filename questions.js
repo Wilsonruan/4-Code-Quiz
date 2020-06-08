@@ -9,21 +9,15 @@ var countDown = 75; // Timer variables
 var stopQuiz, stopQuizViewHighScore = false;
 var inputBoxPlayerName = document.getElementById('input-box-name'); // High Score variables
 var submissionResponse = document.getElementById("show-results"); // Get player information
+var highScore = document.getElementById('high-score')
 var response = [];
 var arrayHighScores = JSON.parse(localStorage.getItem("arrayHighScores"));
-var para, node
 
 if (arrayHighScores === null) {
   console.log(arrayHighScores);
   arrayHighScores = [];
 } else {
   console.log(arrayHighScores);
-  for (var i = 0; i < arrayHighScores.length; i++) {
-    para = document.createElement("p");
-    node = document.createTextNode(submissionResponse);
-    para.appendChild(node);
-    submissionResponse.appendChild(para);
-  }
 }
 
 function timer() {
@@ -114,12 +108,13 @@ function getPlayerName() { //Step 5: Get player's name.
         response = inputBoxPlayerName.children[2].value + "-" + countDown + ".";
         arrayHighScores.push(response);
         submissionResponse.children[0].textContent = "View High Score";
-        para = document.createElement("p");
-        vnode = document.createTextNode(submissionResponse);
-        para.appendChild(node);
-        submissionResponse.appendChild(para);
+        highScore.innerHTML = "";
         for (var i = 0; i < arrayHighScores.length; i++) {
-          submissionResponse.children[i + 1].textContent = arrayHighScores[i];
+          var para = document.createElement("p");
+          var node = document.createTextNode(highScore);
+          para.appendChild(node);
+          highScore.appendChild(para);
+          highScore.children[i].textContent = arrayHighScores[i];
         }
         pleaseStopIt = false;
         viewResults();
