@@ -1,6 +1,6 @@
 var startButton = document.getElementById('start-btn');  // Start Button
 startButton.children[0].addEventListener('click', startGame);
-// startButton.children[1].addEventListener('click', clearHighScore);
+startButton.children[1].addEventListener('click', clearHighScore);
 var navBar = document.getElementById('nav-bar'); // Nav Bar
 navBar.children[0].addEventListener('click', viewHighScore);
 var questionContainerElements = document.getElementById('question-container'); //Question Container
@@ -144,18 +144,11 @@ function viewResults() { //Step 6: View High Score
   localStorage.setItem("arrayHighScores", JSONReadyUsers);
 }
 
-// function clearHighScore() {
-//   for (var i = 1; i < arrayHighScores.length; i++) {
-//     $(document).ready(function(){
-//       $(startButton.children[1]).click(function(){
-//         $("p").remove(submissionResponse.children[1]);
-//       });
-//     });
-//   }
-//   arrayHighScores = [];
-//   console.log(arrayHighScores);
-//   viewResults();
-// }
+function clearHighScore() {
+  arrayHighScores = [];
+  highScore.innerHTML = "";
+  viewResults();
+}
 
 var questions = [
   {
