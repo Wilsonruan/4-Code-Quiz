@@ -10,7 +10,21 @@ var stopQuiz, stopQuizViewHighScore = false;
 var inputBoxPlayerName = document.getElementById('input-box-name'); // High Score variables
 var submissionResponse = document.getElementById("show-results"); // Get player information
 var response = [];
-var arrayHighScores = [];
+var arrayHighScores = JSON.parse(localStorage.getItem("arrayHighScores"));
+var para, node
+
+if (arrayHighScores === null) {
+  console.log(arrayHighScores);
+  arrayHighScores = [];
+} else {
+  console.log(arrayHighScores);
+  for (var i = 0; i < arrayHighScores.length; i++) {
+    para = document.createElement("p");
+    node = document.createTextNode(submissionResponse);
+    para.appendChild(node);
+    submissionResponse.appendChild(para);
+  }
+}
 
 function timer() {
   navBar.children[1].textContent = "Timer: 75"
@@ -42,8 +56,7 @@ function showQuestion(title) { // Step 2: Shows the Question and Answers. Waitin
   startButton.classList.add('hide')
   submissionResponse.classList.add('hide')
   while (questionContainerElements.children[1].firstChild) {
-    questionContainerElements.children[1].removeChild
-      (questionContainerElements.children[1].firstChild)
+    questionContainerElements.children[1].removeChild(questionContainerElements.children[1].firstChild);
   }
   questionContainerElements.children[0].innerText = (title.title)
   title.choices.forEach(answer => {
@@ -101,8 +114,8 @@ function getPlayerName() { //Step 5: Get player's name.
         response = inputBoxPlayerName.children[2].value + "-" + countDown + ".";
         arrayHighScores.push(response);
         submissionResponse.children[0].textContent = "View High Score";
-        var para = document.createElement("p");
-        var node = document.createTextNode(submissionResponse);
+        para = document.createElement("p");
+        vnode = document.createTextNode(submissionResponse);
         para.appendChild(node);
         submissionResponse.appendChild(para);
         for (var i = 0; i < arrayHighScores.length; i++) {
@@ -132,6 +145,8 @@ function viewResults() { //Step 6: View High Score
   inputBoxPlayerName.classList.add('hide');
   navBar.children[1].textContent = "Timer: 0";
   console.log(arrayHighScores);
+  var JSONReadyUsers = JSON.stringify(arrayHighScores);
+  localStorage.setItem("arrayHighScores", JSONReadyUsers);
 }
 
 // function clearHighScore() {
