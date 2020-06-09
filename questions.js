@@ -133,7 +133,7 @@ function viewHighScore() {
 function viewResults() { //Step 6: View High Score
   startButton.classList.remove('hide');
   startButton.children[1].classList.remove('hide');
-  startButton.classList.add('float-right');
+  startButton.children[4].classList.remove('col-9');
   submissionResponse.classList.remove('hide');
   inputBoxPlayerName.classList.add('hide');
   navBar.children[1].textContent = "Timer: 0";
