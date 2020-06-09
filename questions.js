@@ -150,7 +150,136 @@ function clearHighScore() {
   viewResults();
 }
 
+var HTMLquestions = [
+  {
+    title: "What does HTML stand for?",
+    choices: [
+      { text: "High Text Markup Language", correct: false },
+      { text: "Hyper Text Makeup Language", correct: false },
+      { text: "Hypertext Markup Language", correct: true },
+      { text: "Hide Text Mistake Lost", correct: false },]
+  },
+  {
+    title: "Which one is the correct HTML element?",
+    choices: [
+      { text: "class", correct: false },
+      { text: "function myfucntion()", correct: false },
+      { text: "<h1>", correct: true },
+      { text: "element", correct: false },]
+  },
+  {
+    title: "What is the correct HTML for adding a background color?",
+    choices: [
+      { text: "<style='background-color;yellow'>", correct: false },
+      { text: "<body 'background-color:yellow;'>", correct: false },
+      { text: "<body style='background-color:yellow;'>", correct: true },
+      { text: "<background-color-yellow;>", correct: false },]
+  },
+  {
+    title: "What element HTML bold text.",
+    choices: [
+      { text: "<li>", correct: false },
+      { text: "<br>", correct: false },
+      { text: "<strong>", correct: true },
+      { text: "<bold>", correct: false },]
+  },
+  {
+    title: "What are attribute in HTML?",
+    choices: [
+      { text: "It doesn nothing", correct: false },
+      { text: "Changes the HTML elements", correct: false },
+      { text: "Provide additional information about HTML elements", correct: true },
+      { text: "All Above", correct: false },]
+  },
+];
+
+var CSSquestions = [
+  {
+    title: "What does CSS stands for",
+    choices: [
+      { text: "strings", correct: false },
+      { text: "booleans", correct: false },
+      { text: "Cascading Style Sheets", correct: true },
+      { text: "numbers", correct: false },]
+  },
+  {
+    title: "What is the correct CSS for adding a background color?",
+    choices: [
+      { text: "color: yellow;", correct: false },
+      { text: "background-color-yellow;", correct: false },
+      { text: "background-color: yellow;", correct: true },
+      { text: "background-color: (yellow)", correct: false },]
+  },
+  {
+    title: "What is the correct order of margin property sets?",
+    choices: [
+      { text: "Top, Top, Top, and Top", correct: false },
+      { text: "Right, Bottom, Left, and Top", correct: false },
+      { text: "Top, Right, Bottom, and Left", correct: true },
+      { text: "Right, Bottom, Top, and Left", correct: false },]
+  },
+  {
+    title: "Which HTML tag is used to define an internal style sheet?",
+    choices: [
+      { text: "<callstyle>", correct: false },
+      { text: "<styles>", correct: false },
+      { text: "<style>", correct: true },
+      { text: "<css>", correct: false },]
+  },
+  {
+    title: "How do you insert a comment in a CSS file?",
+    choices: [
+      { text: "// this is a comment", correct: false },
+      { text: "// this is a comment //", correct: false },
+      { text: "/* this is a comment */", correct: true },
+      { text: "' this is a comment", correct: false },]
+  },
+];
+
 var questions = [
+  {
+    title: "What is 25 * 37?",
+    choices: [
+      { text: "950", correct: false },
+      { text: "1000", correct: false },
+      { text: "925", correct: true },
+      { text: "975", correct: false },]
+  },
+  {
+    title: "What is 6 ÷ 2(1+2)?",
+    choices: [
+      { text: "9", correct: false },
+      { text: "3", correct: false },
+      { text: "0", correct: true },
+      { text: "6", correct: false },]
+  },
+  {
+    title: "What is 666 + 7777?",
+    choices: [
+      { text: "9443", correct: false },
+      { text: "131313", correct: false },
+      { text: "8443", correct: true },
+      { text: "7443", correct: false },]
+  },
+  {
+    title: "What is 9 - 3 ÷ 1 ÷ 3 + 1?",
+    choices: [
+      { text: "10", correct: false },
+      { text: "1", correct: false },
+      { text: "9", correct: true },
+      { text: "0", correct: false },]
+  },
+  {
+    title: "What is 43 x 67?",
+    choices: [
+      { text: "No meaning", correct: false },
+      { text: "exit while when exitNow is false", correct: false },
+      { text: "2881", correct: true },
+      { text: "All Above", correct: false },]
+  },
+];
+
+var JavaSciptQuestions = [
   {
     title: "Commonly used data types DO NOT include:",
     choices: [
