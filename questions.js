@@ -16,8 +16,6 @@ var arrayHighScores = JSON.parse(localStorage.getItem("arrayHighScores"));
 if (arrayHighScores === null) {
   console.log(arrayHighScores);
   arrayHighScores = [];
-} else {
-  console.log(arrayHighScores);
 }
 
 function timer() {
