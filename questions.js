@@ -4,7 +4,7 @@ startButton.children[1].addEventListener('click', clearHighScore);
 var navBar = document.getElementById('nav-bar'); // Nav Bar
 navBar.children[0].addEventListener('click', viewHighScore);
 var questionContainerElements = document.getElementById('question-container'); //Question Container
-var shuffledQuestions, currentQuestionIndex;
+var shuffledQuestions, currentQuestionIndex, questions;
 var countDown = 75; // Timer variables
 var stopQuiz, stopQuizViewHighScore = false;
 var inputBoxPlayerName = document.getElementById('input-box-name'); // High Score variables
@@ -34,6 +34,7 @@ function timer() {
 }
 
 function startGame() { // Step 1: After clicking on the start button
+  pickquestion()
   countDown = 75;
   stopQuiz = false;
   stopQuizViewHighScore = false;
@@ -148,6 +149,26 @@ function clearHighScore() {
   viewResults();
 }
 
+function pickquestion() {
+
+  if (startButton.children[4].children[0].children[0].checked) {
+    questions = JavaSciptQuestions;
+  }
+  
+  if (startButton.children[4].children[1].children[0].checked) {
+    questions = HTMLquestions;
+  }
+  
+  if (startButton.children[4].children[2].children[0].checked) {
+    questions = CSSquestions;
+  }
+  
+  if (startButton.children[4].children[3].children[0].checked) {
+    questions = mathQuestions;
+  }
+  
+  }
+
 var HTMLquestions = [
   {
     title: "What does HTML stand for?",
@@ -234,7 +255,7 @@ var CSSquestions = [
   },
 ];
 
-var questions = [
+var mathQuestions = [
   {
     title: "What is 25 * 37?",
     choices: [
