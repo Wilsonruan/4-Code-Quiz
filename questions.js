@@ -12,6 +12,8 @@ var submissionResponse = document.getElementById("show-results"); // Get player 
 var highScore = document.getElementById('high-score')
 var response = [];
 var arrayHighScores = JSON.parse(localStorage.getItem("arrayHighScores"));
+var correctSound = document.getElementById('correct-sound')
+var incorrectSound = document.getElementById('incorrect-sound')
 
 if (arrayHighScores === null) {
   console.log(arrayHighScores);
@@ -79,8 +81,10 @@ function selectAnswer(e) { // Step 3: User selects Answer and determines if answ
 function showAnswer(element, correct) { // Step 4: Shows users if they are correct/incorrect.
   if (correct) {
     questionContainerElements.children[2].innerText = "Correct"
+    correctSound.play();
   } else {
     questionContainerElements.children[2].innerText = "Incorrect"
+    incorrectSound.play();
     countDown = countDown - 15;
   }
   setTimeout(() => {
@@ -97,7 +101,7 @@ function getPlayerName() { //Step 5: Get player's name.
     countDown = 0
   }
   inputBoxPlayerName.children[0].innerHTML = 'Your score is ' + countDown
-  inputBoxPlayerName.children[4].addEventListener('click', () => {
+  inputBoxPlayerName.children[4].addEventListener('click', (event) => {
       event.preventDefault()
     var checkInputBox = /[a-z]/gi;
     var resultsInputBox = checkInputBox.test(inputBoxPlayerName.children[2].value);
