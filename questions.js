@@ -40,11 +40,11 @@ function startGame() { // Step 1: After clicking on the start button
   countDown = 75;
   stopQuiz = false;
   stopQuizViewHighScore = false;
-  questionContainerElements.classList.remove('hide')
-  shuffledQuestions = questions.sort(() => Math.random() - .5)
-  currentQuestionIndex = 0
-  timer()
-  showQuestion(shuffledQuestions[currentQuestionIndex])
+  questionContainerElements.classList.remove('hide');
+  shuffledQuestions = questions.sort(() => Math.random() - .5);
+  currentQuestionIndex = 0;
+  timer();
+  showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
 function showQuestion(title) { // Step 2: Shows the Question and Answers. Waiting for user to click.
@@ -54,7 +54,7 @@ function showQuestion(title) { // Step 2: Shows the Question and Answers. Waitin
     questionContainerElements.children[1].removeChild(questionContainerElements.children[1].firstChild);
   }
   questionContainerElements.children[0].innerText = (title.title)
-  title.choices.forEach(answer => {
+  questions[currentQuestionIndex].choices.sort(() => Math.random() - .5).forEach(answer => {
     var button = document.createElement('button')
     button.innerText = answer.text
     button.classList.add('btn-primary')
