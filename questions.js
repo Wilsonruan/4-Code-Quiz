@@ -58,9 +58,6 @@ function showQuestion(title) { // Step 2: Shows the Question and Answers. Waitin
     var button = document.createElement('button')
     button.innerText = answer.text
     button.classList.add('btn-primary')
-    button.classList.add('d-flex')
-    button.classList.add('flex-nowrap')
-    button.classList.add('justify-content-center')
     if (answer.correct) {
       button.dataset.correct = answer.correct
     }
