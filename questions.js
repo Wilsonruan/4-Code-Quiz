@@ -4,7 +4,7 @@ startButton.children[1].addEventListener('click', clearHighScore);
 var navBar = document.getElementById('nav-bar'); // Nav Bar
 navBar.children[0].addEventListener('click', viewHighScore);
 var questionContainerElements = document.getElementById('question-container'); //Question Container
-var shuffledQuestions, currentQuestionIndex, questions;
+var shuffledQuestions, shuffledAnswers, currentQuestionIndex, questions;
 var countDown = 75; // Timer variables
 var stopQuiz, stopQuizViewHighScore = false;
 var inputBoxPlayerName = document.getElementById('input-box-name'); // High Score variables
@@ -54,7 +54,8 @@ function showQuestion(title) { // Step 2: Shows the Question and Answers. Waitin
     questionContainerElements.children[1].removeChild(questionContainerElements.children[1].firstChild);
   }
   questionContainerElements.children[0].innerText = (title.title)
-  questions[currentQuestionIndex].choices.sort(() => Math.random() - .5).forEach(answer => {
+  shuffledAnswers = questions[currentQuestionIndex].choices.sort(() => Math.random() - .5);
+  shuffledAnswers.forEach(answer => {
     var button = document.createElement('button')
     button.innerText = answer.text
     button.classList.add('btn-primary')
