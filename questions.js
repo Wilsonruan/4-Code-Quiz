@@ -103,7 +103,7 @@ function getPlayerName() { //Step 5: Get player's name.
   inputBoxPlayerName.children[0].innerHTML = 'Your score is ' + countDown
   inputBoxPlayerName.children[4].addEventListener('click', (event) => {
       event.preventDefault()
-    var checkInputBox = /[a-z]/gi;
+    var checkInputBox = /^[a-z]+$/gi;
     var resultsInputBox = checkInputBox.test(inputBoxPlayerName.children[2].value);
     inputBoxPlayerName.children[2].value = inputBoxPlayerName.children[2].value.toUpperCase();
     if (inputBoxPlayerName.children[2].value.length == 2 && resultsInputBox) {
