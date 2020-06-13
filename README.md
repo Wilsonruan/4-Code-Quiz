@@ -6,7 +6,7 @@ This is a practice Code Quiz function for Bootcamp Student.
 
 The user will arrive at the landing page and can choose between four quizzs.  Each test will have 5 questions with 4 multiple choice answers.  There is navigation a option to "View Highscores" and the "Time" value set at 0.  All the pages adapts to multiple screen sizes.
 
-![](./assets/images/After-Game.jpg)
+![](./assets/images/Opening-Page.jpg)
 
 # Start Game:
 
@@ -20,10 +20,13 @@ The "Time" will start at 75 seconds and count down until it reaches 0.  The game
 
 The user may click view HighScore at any time. After clicking, a "Clear Score" button and all the High Scores from previous games will appear.  All scores will be storage in localStorage function. The "Clear Score" button will clear history of previous scores. Please note clicking the on "view HighScore" button during a game will result in losing the game and will not be saved. 
 
+![](./assets/images/Start-Game.jpg)
+
 # After the Game:
 
 After 5 questions have been answered.  The page will show the player's time and ask to enter his/her initials below.  The user can only submit two letters.  Otherwise, cannot submit their name to the High Score Board.  After submit, the page will show all the High Score from the local storage.  
 
+![](./assets/images/After-Game.jpg)
 
 # The URL of the deployed application:
 
