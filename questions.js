@@ -111,15 +111,6 @@ function getPlayerName() { //Step 5: Get player's name.
       if (pleaseStopIt) {
         response = inputBoxPlayerName.children[2].value + "-" + countDown + ".";
         arrayHighScores.push(response);
-        submissionResponse.children[0].textContent = "View High Score";
-        highScore.innerHTML = "";
-        for (var i = 0; i < arrayHighScores.length; i++) {
-          var para = document.createElement("p");
-          var node = document.createTextNode(highScore);
-          para.appendChild(node);
-          highScore.appendChild(para);
-          highScore.children[i].textContent = arrayHighScores[i];
-        }
         pleaseStopIt = false;
         viewResults();
       }
@@ -137,6 +128,15 @@ function viewHighScore() {
 }
 
 function viewResults() { //Step 6: View High Score
+  submissionResponse.children[0].textContent = "View High Score";
+  highScore.innerHTML = "";
+  for (var i = 0; i < arrayHighScores.length; i++) {
+    var para = document.createElement("p");
+    var node = document.createTextNode(highScore);
+    para.appendChild(node);
+    highScore.appendChild(para);
+    highScore.children[i].textContent = arrayHighScores[i];
+  }
   startButton.classList.remove('hide');
   startButton.children[1].classList.remove('hide');
   startButton.children[4].classList.remove('col-9');
