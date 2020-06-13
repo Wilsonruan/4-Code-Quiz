@@ -6,7 +6,7 @@ This is a practice Code Quiz function for Bootcamp Student.
 
 The user will arrive at the landing page and can choose between four quizzs.  Each test will have 5 questions with 4 multiple choice answers.  There is navigation a option to "View Highscores" and the "Time" value set at 0.  All the pages adapts to multiple screen sizes.
 
-![](./assets/images/Opening-Page.jpg)
+<img src="./assets/images/Opening-Page.jpg" width="100" height="100">
 
 # Start Game:
 
