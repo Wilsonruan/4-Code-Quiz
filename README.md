@@ -18,7 +18,7 @@ The "Time" will start at 75 seconds and count down until it reaches 0.  The game
 
 # View HighScore Button:
 
-The user may click view HighScore at any time. After clicking, a "Clear Score" button and all the High Scores from previous games will appear.  All scores will be storage in localStorage function. The "Clear Score" button will clear history of previous scores. Please note clicking the on "view HighScore" button during a game will result in losing the game and will not be saved. 
+The user may click view HighScore at any time. After clicking, a "Clear Score" button and all the High Scores from previous games will appear.  All scores will be storage in localStorage function. The "Clear Score" button will clear history of previous scores. Please note clicking the on "view HighScore" button during a game will result in lost game and will not be saved. 
 
 ![](./assets/images/Start-Game.jpg)
 
