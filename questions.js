@@ -296,10 +296,10 @@ var mathQuestions = [
   {
     title: "What is 43 x 67?",
     choices: [
-      { text: "No meaning", correct: false },
-      { text: "exit while when exitNow is false", correct: false },
+      { text: "2818", correct: false },
+      { text: "2811", correct: false },
       { text: "2881", correct: true },
-      { text: "All Above", correct: false },]
+      { text: "2882", correct: false },]
   },
 ];
 
