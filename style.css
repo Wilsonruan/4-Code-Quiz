@@ -17,3 +17,10 @@ header {
     max-width: 800px;
     margin-top: 50px;
 }
+
+body {
+    background-image: url(http://govexec.com/media/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
